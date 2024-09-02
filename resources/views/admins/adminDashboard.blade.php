@@ -8,7 +8,7 @@
             <div class="flex flex-col justify-between p-6 leading-normal">
             <img src="{{ asset('images/assigned.png') }}" class="h-10 w-10 mb-2" alt="Logo" />
                 <h5 class="mb-2 text-xl font-bold tracking-tight text-green-600 dark:text-white">Add Course</h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Honorable chairmans/deans can distribute courses to teachers from here.</p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Honorable chairmans/deans can distribute courses to teachers from here.</p> <i class="fa-solid fa-table-columns"></i>
             </div>
         </a>
 
@@ -31,6 +31,4 @@
     </div>
 
 </div>
-
-
 @endsection

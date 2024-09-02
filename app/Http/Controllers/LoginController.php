@@ -7,6 +7,7 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Role;
+use \Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -15,21 +16,21 @@ class LoginController extends Controller
         $user = User::where('email', $request->get('email'))->first();
 
         if ($user == null) {
-            return redirect()->back()->with('error', 'email does not exist');
+            return redirect()->back()->with('error', 'Email does not exist'); 
         }
 
         if (!Hash::check($request->get('password'), $user->password)) {
             return redirect()->back()->with('error', 'Wrong Password');
         }
 
-        \Illuminate\Support\Facades\Session::put('curr_user', $user);
+        Session::put('curr_user', $user);
 
         $user_role_id = $user->role_id;
         $user_id = $user->id;
-        $user_role_name = Role::where('id', $user_role_id)->first()->title;
+        $user_role_name = Role::where('id', $user_role_id)->first()->title; //ei varable e ki ashte pare?
 
-        \Illuminate\Support\Facades\Session::put('user_role', $user_role_name);
-        \Illuminate\Support\Facades\Session::put('user_id', $user_id);
+        Session::put('user_role', $user_role_name);
+        Session::put('user_id', $user_id);
 
         if ($user_role_name == 'teacher') {
             //dd($user_role_name);

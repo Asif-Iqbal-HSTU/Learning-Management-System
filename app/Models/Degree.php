@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class Degree extends Model
 {
     use HasFactory;
     protected $guarded = ['created_at','updated_at'];
 
-    public function chairman()
+    public function students()
     {
-        return $this->hasOne(User::class);
+        return $this->hasMany(Student::class);
     }
 
-    public function teachers()
+    public function courses()
     {
-        return $this->hasMany(Teacher::class);
+        return $this->hasMany(Course::class);
     }
 }

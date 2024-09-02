@@ -18,15 +18,19 @@ class DatabaseSeeder extends Seeder
     {
         Role::create(['title' => 'admin']);
         Role::create(['title' => 'teacher']);
+        Role::create(['title' => 'student']);
 
         SpecialRole::create(['title' => 'dean']);
         SpecialRole::create(['title' => 'chairman']);
+        SpecialRole::create(['title' => 'vc']);
 
-        $teacherRoleId = Role::where('title', 'teacher')->first()->id;
+        $teacherRoleId = Role::where('title', 'teacher')->first()->id;      //Eloquent ORM
         $adminRoleId = Role::where('title', 'admin')->first()->id;
+        $studentRoleId = Role::where('title', 'student')->first()->id;
 
         $deanRoleId = SpecialRole::where('title', 'dean')->first()->id;
         $chairmanRoleId = SpecialRole::where('title', 'chairman')->first()->id;
+        $vcRoleId = SpecialRole::where('title', 'vc')->first()->id;
 
         $teacher = User::create([
             'fullname' => 'Teacher Name 1',
